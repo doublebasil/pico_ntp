@@ -1,2 +1,2 @@
-#define WIFI_SSID       "ssid"
-#define WIFI_PASSWORD   "wifi-password"
+#define WIFI_SSID       "BTHub6-7S75"
+#define WIFI_PASSWORD   "CgwrJuk3wc97"

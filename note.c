@@ -178,14 +178,13 @@ bool repeat_timer_cb(repeating_timer_t *rt) {
     static datetime_t dt;
   
     rtc_get_datetime(&dt);
-    
 
-if (showAnalog)
-    analogClock(&dt);
-else
-    digitColck(&dt);
+    if (showAnalog)
+        analogClock(&dt);
+    else
+        digitColck(&dt);
 
-/* 
+    /* 
     if (dt.sec == 0) { 
         ili9341_fill_rect(6,6,309, 229, 0xffff);
         set_wifi_status_icon(net_time.tcpip_link_state);
@@ -244,8 +243,8 @@ int main()
 /* get ntp server ip address  */
     int dns_ret;
     absolute_time_t timeout = make_timeout_time_ms(20000);
-    while (!net_time.ntp_server_found && absolute_time_diff_us(get_absolute_time(), timeout) > 0) {
-        dns_ret = dns_gethostbyname(NTP_SERVER, &net_time.ntp_ipaddr, dns_cb, &net_time);
+    while ( !net_time.ntp_server_found && absolute_time_diff_us(get_absolute_time(), timeout ) > 0) {
+        dns_ret = dns_gethostbyname( NTP_SERVER, &net_time.ntp_ipaddr, dns_cb, &net_time );
         if (dns_ret == ERR_OK) break;
         sleep_ms(1000);
     }
@@ -256,9 +255,9 @@ int main()
     
     get_ntp_time();
 
-   repeating_timer_t rt;
-   add_repeating_timer_ms(-1000, repeat_timer_cb, &net_time, &rt);
-   int tcpip_stat;
+    repeating_timer_t rt;
+    add_repeating_timer_ms(-1000, repeat_timer_cb, &net_time, &rt);
+    int tcpip_stat;
     while(1) {
         sleep_ms(10000);
         tcpip_stat = cyw43_tcpip_link_status(&cyw43_state, CYW43_ITF_STA);
