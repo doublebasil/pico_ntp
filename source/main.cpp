@@ -1,6 +1,11 @@
 #include <stdio.h>
 
 #include "pico/stdlib.h"
+#include "hardware/rtc.h"
+
+#include "lwip/dns.h"
+#include "lwip/pbuf.h"
+#include "lwip/udp.h"
 
 int main( void )
 {
