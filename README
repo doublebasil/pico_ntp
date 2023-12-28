@@ -1,0 +1,4 @@
+Good example of RTC/NTP stuff in pico-examples, called picow_ntp_client.c
+Also good RTC example
+There's another example in note.c from some random youtube video
+Ideally I'd have made the NTP code into it's own c file
