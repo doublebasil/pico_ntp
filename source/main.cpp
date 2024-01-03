@@ -135,7 +135,7 @@ void getNtpTime()
 
 void ntpRecievedCallback(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
 {
-    t_ntpData* ntpData = (t_ntpData*) arg;
+    // t_ntpData* ntpData = (t_ntpData*) arg;
     uint8_t mode = pbuf_get_at( p, 0 ) & 0x07; // LI[2], VN[3], MODE[3], mode(0x04): server
     uint8_t stratum = pbuf_get_at( p, 1 );
     uint8_t ts[4] = {0};
@@ -175,4 +175,5 @@ int64_t alarmNtpUpdateCallback( alarm_id_t alarm_id, void* param )
     printf( "Alarm went off, updating the RTC/NTP thing\n" );
     cancel_alarm( alarm_id );
     getNtpTime();
+    return 0; // I think this function needs to be int64_t, even though it doesn't need to return anything
 }

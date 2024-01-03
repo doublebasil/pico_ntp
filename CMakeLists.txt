@@ -9,8 +9,7 @@ project(${PROJECT_NAME} C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17) # CXX is c++
 
-# add_compile_options(-Wall -Werror) # Treat all warnings as errors
-add_compile_options(-Wall)
+add_compile_options(-Wall -Werror)
 
 pico_sdk_init()
 
