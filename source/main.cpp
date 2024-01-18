@@ -85,9 +85,11 @@ int main( void )
     int attempts = 0;
     while( attempts < maxAttempts )
     {
+        cyw43_arch_lwip_begin();
         dnsReturnCode = dns_gethostbyname( NTP_SERVER, &m_ntpData.ntpIpAddress, dnsCallback, &m_ntpData );
         if( dnsReturnCode == ERR_OK )
             break;
+        cyw43_arch_lwip_end();
 
         ++attempts;
         sleep_ms( 1000 );
